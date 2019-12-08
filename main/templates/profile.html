@@ -1,0 +1,64 @@
+{%extends "base.html" %}
+
+{% block title %}Almossom &mdash; Perfil{% endblock title %}
+
+{%block activeP%} active {%endblock %}
+
+{% block wel_txt %} PERFIL {% endblock wel_txt %}
+
+{% load crispy_forms_tags %}
+
+{%block page_perfil %}  
+
+
+
+<div class="site-section">
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 col-lg-7 mb-3">
+        <div class="content-section">
+            <div class="">
+
+                <div class="mb-5">
+                <img class=" rounded mx-auto d-block account-img cel" src="{{ user.profile.image.url }}">
+                </div>
+
+                
+            <div class="media-body">                  
+                <h2 class="text-center account-heading">{{ user.username }}</h2>
+                <p class="text-center text-secondary">{{ user.email }}</p>
+                <p class="text-center text-secondary">{{ user.profile.descricao }}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    
+
+    <div class="col-lg-4 ml-auto formcel">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset style=" font-size: small;" class="form-group">
+            <legend class="border-bottom mb-4">Edite suas informações!</legend>
+         
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+         
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Salve</button>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+
+{% for banda in bandas%}
+{{banda.nome}}
+{{banda.descricao}}
+{%endfor%}
+
+{% endblock %}
+
+

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+
+{% block title %}Almossom &mdash; Almosons{% endblock title %}
+
+{%block activeH%} active {%endblock %}
+
+{% block wel_txt %} Almosons {% endblock wel_txt %}
+
+{% load crispy_forms_tags %}
+
+{%block page_content %}
+
+
+{% if request.user.is_superuser %}
+
+<div class="site-section">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12 col-lg-6 mb-4">
+  <form method="POST">
+      {% csrf_token %}
+  <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Editar Informações</legend>
+      {{ form|crispy }}
+  </fieldset>
+  <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Concluido</button>
+  </div>
+  </form>
+    </div>
+    </div>
+
+{% endif %}
+
+
+{% if request.user.is_authenticated %}
+<div class="container site-section texte1">
+<div class="row">
+<div class="coll col-lg-6 mb-2"> 
+    <div class="" data-aos="fade-up" data-aos-delay="100">
+      <h1 style="color: whitesmoke;">Minhas Bandas</h1>
+      {% for banda in bandas %}
+      <p> {{banda.nome}} 
+          {% if banda not in almossom.bandas.all %}
+            <a href={% url 'subscribe' almo_id=almossom.id banda_id=banda.id %}>Inscrever</a>
+          {% else %} 
+            <a href={% url 'unsubscribe' almo_id=almossom.id banda_id=banda.id %}>Desinscrever</a>
+          {% endif %}
+      </p>
+      {%endfor %}
+</div>
+</div>
+<div class="col-lg-5"> 
+            <div class="col-md-14" data-aos="fade-up" data-aos-delay="100">
+             <img style="width: 100%;" alt="Ilustração" class="img-fluid" src="/{{almossom.image}}" >
+              <div class="p-4 bg-white">
+                <span class="d-block text-secondary small text-uppercase"><a style="color:#0f0f0f;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.data}}</span>
+         
+                <h2 class="h5 text-black mb-3" style="font-weight: 600; margin: 2% 0 2% 0;"><a style="color:#ee9e0a;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.info}}</a></h2>
+                <h2 class="h5 text-black mb-3" style="font-weight: 600; margin: 2% 0 2% 0;"><a style="color:#ee9e0a;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.descricao}}</a></h2>
+                <h1 style="color: black;">Bandas Inscritas</h1>
+                {% for banda in almossom.bandas.all %}
+                  <h2 style="color: black;"> - {{banda.nome}}</h2>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+{% else %}
+
+<div style="display: inline-flex;" class=" site-section texte1">
+  <div class="container mbcell">
+    <div class="row mbcell" >
+
+      <div class="coll col-lg-6 mb-2" data-aos="fade-up" data-aos-delay="100">
+        <img alt="Ilustração" class="img-fluid" src="/{{almossom.image}}" >
+      </div>
+        <div  class="col-lg-5 coll"  data-aos="fade-up" data-aos-delay="100">
+          <div style="height: 98%;" class="bg-white">
+            <span style="text-align: center;  font-weight: bold; font-size: larger;" class="d-block text-secondary small text-uppercase;"><a style="color:#0f0f0f; " href={% url 'almo_edit' id=almossom.id %}>{{almossom.data}}</span>
+            <h2 class="h5 text-black mb-3" style="text-align: center; font-weight: 600; margin: 2% 0 2% 0;"><a style="color:#ee9e0a;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.info}}</a></h2>
+            <h2 class="h5 text-black mb-3" style="text-align: center; font-weight: 600; margin: 2% 0 2% 0;"><a style="color:#ee9e0a;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.titulo}}</a></h2>
+            <h2 class="h5 text-black mb-3" style="text-align: center; font-weight: 600; margin: 2% 0 2% 0;"><a style="color:#ee9e0a;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.descricao}}</a></h2>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+ 
+ 
+{% endblock %}
+

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{%block activeH%} active {%endblock %}
+
+{%block page_content %}
+
+<div id="conteudo" class="site-section">
+<div class="container">
+<div class="row">
+    <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+      <h2 class="mb-5">Próximos Almosons</h2>
+      <p>Aqui você se informa dos próximos almosons, se programe e não perca a data do evento!</p>
+    </div>
+  </div>
+</div>
+</div>
+
+  {% for almossom in almossoms %}
+  
+
+  <div style="display: inline-flex;" class="largura_almo">
+  <div class="" data-aos="fade-up" data-aos-delay="100">
+      <a href={% url 'almo_edit' id=almossom.id %} class="unit-9">
+        <div class="image2"> 
+        <img alt="Ilustração" class="img-fluid" src="{{almossom.image}}" >
+        </div>
+        <div class="unit-9-content up">
+          <h2>>>></h2>
+          <span style="margin-top: 8px;" href={% url 'almo_edit' id=almossom.id %}>{{almossom.data}}</span>
+          <span>Cadastre seu grupo</span>
+        </div>
+      </a>
+    </div>
+    </div>
+   
+
+  {% endfor %}
+
+
+
+  <!-- https://coolors.co/5abebe-fff9f9-eb4412-afa099-000000 -->
+
+    
+        <div class="site-section" >
+    
+          <div class="container">
+    
+            <div class="row">
+              <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto" data-aos="fade-up">
+                <h2 class="mb-5">Participe Conosco</h2>
+                <p>Aqui se encontra a central de atividades, você poderá criar uma banda, colocar ela para participar dos eventos e conferir as fotos mais recentes dos eventos realizados.</p>
+              </div>
+            </div>
+            
+            <div class="site-block-retro d-block d-md-flex">
+    
+              <a href={%  url 'cadastro_banda' %} class="col1 unit-9 no-height" data-aos="fade-up" data-aos-delay="100">
+                <div class="image" style="background-image: url('static/images/img_2.jpg');"></div>
+                <div class="unit-9-content">
+                  <h2>Criação da banda</h2>
+              
+                </div>
+              </a>
+    
+              <div class="col2 ml-auto">
+    
+                <a href="#conteudo" class="col2-row1 unit-9 no-height" data-aos="fade-up" data-aos-delay="200">
+                  <div class="image" style="background-image: url('static/images/img_3.jpg');"></div>
+                  <div class="unit-9-content">
+                    <h2>Participe do Próximo Almosom</h2>
+                    
+                  </div>
+                </a>
+    
+                <a href={% url 'galeria' %} class="col2-row2 unit-9 no-height" data-aos="fade-up" data-aos-delay="300">
+                  <div class="image" style="background-image: url('static/images/img_1.jpg');"></div>
+                  <div class="unit-9-content">
+                    <h2>Galeria de Fotos</h2>
+                    
+                  </div>
+                </a>
+    
+              </div>
+    
+            </div>
+            
+          </div>
+        </div>
+     
+  
+    
+    
+        <div class="site-section bg-dark block-13">
+          <div class="container" data-aos="fade-up">
+            <div class="row">
+              <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
+                <h2 style="color: white;" class="mb-5">Desenvolvedores</h2>
+                <p>Alunos do 3º ano Técnico em Informática.</p>
+              </div>
+            </div>
+            <div class="nonloop-block-13 owl-carousel">
+              
+              <div class="text-center p-3 p-md-5 bg-white">
+                <div class="mb-4">            
+                  <img src="{% static 'images/feli.jpg' %}" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
+                </div>
+                <div class="text-black">
+                  <h3 class="font-weight-light h5">Felipe Furtado</h3>
+                  <p class="font-italic">&ldquo;Analista de Dados e Estruturador do Banco de Dados. &rdquo;</p>
+                </div>
+              </div>
+    
+              <div class="text-center p-3 p-md-5 bg-white">
+                <div class="mb-4">            
+                  <img src="static/images/dani.png" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
+                </div>
+                <div class="text-black">
+                  <h3 class="font-weight-light h5">Daniel Keiser</h3>
+                  <p class="font-italic">&ldquo;Desenvolvedor do Sistema, Banco e Estruturador de Web Designer.&rdquo;</p>
+                </div>
+              </div>
+    
+              <div class="text-center p-3 p-md-5 bg-white">
+                <div class="mb-4">            
+                  <img src="static/images/vini.jpg" alt="Image" style="transform: rotate(95deg);" class="w-50 mx-auto img-fluid rounded-circle">
+                </div>
+                <div class="text-black">
+                  <h3 class="font-weight-light h5">Vinicius Monteiro</h3>
+                  <p class="font-italic">&ldquo;Desenvolvedor do Sistema e Estruturador do Banco de Dados.&rdquo;</p>
+                </div>
+              </div>
+    
+              
+    
+            </div>
+          </div>
+        </div>  
+        
+        
+    
+    
+{% endblock%}

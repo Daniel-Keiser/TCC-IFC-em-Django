@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Almossom &mdash; Eventos{% endblock title %}
+
+{%block activeE%} active {%endblock %}
+
+{% block wel_txt %} EVENTOS {% endblock wel_txt %}
+
+{% load crispy_forms_tags %}
+
+{%block page_content %}
+
+    {% for evento in eventos %}
+
+    <div style="display: inline-flex;" class="largura site-section">
+        <div class="container ">
+          <div class="row ">
+            <div class="col-md-12 " data-aos="fade-up" data-aos-delay="100">
+             <img style="width: inherit;" alt="Ilustração" class="img-fluid" src="{{evento.image}}" >
+              <div class="p-4 bg-white">
+                <span class="d-block text-secondary small text-uppercase"><a style="color:#0f0f0f;" href={% url 'event_edit' id=evento.id %}>{{evento.data}}</span>
+                <h2 class="h5 text-black mb-3" style="font-weight: 600; margin: 2% 0 2% 0;"><a style="color:#ee9e0a;" href={% url 'event_edit' id=evento.id %}>{{evento.titulo}}</a></h2>
+                <h2 class="h5 text-black mb-3"><a href=""></a></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    
+    {% endfor %}
+{% endblock %}
+
+

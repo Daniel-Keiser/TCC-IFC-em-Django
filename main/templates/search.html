@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    {% for banda in bandas%}
+
+  <div class="site-section">
+
+        <div class="container">
+        <div class="row">
+        <div class="col-md-12 col-lg-6 mb-4"  data-aos="fade-up">
+ 
+    
+
+    <ul style="margin-left:2%; margin-top:3%;">
+      <h2 style="color: whitesmoke;">Líder da Banda: </h2>
+      {{banda.lider}}
+          <!-- <button style="float:right; margin-right:2%;"></button> -->
+    </ul>
+
+    <ul style="margin-left:2%; margin-top:3%;">
+    <h2  style="color: whitesmoke;">Nome:</h2>
+     {{banda.nome}}
+    </ul>
+     <br>
+
+     </div>
+     <div class="col-lg-5" style="background:whitesmoke;"  data-aos="fade-up" >  
+        <ul style="margin-left:2%; margin-top:3%;">
+        <h2 style="color: black; font: larger;">Descrição:</h2>
+        <a style="color: black;">
+        {{banda.descricao}}
+        </a>
+      </ul>
+       </div>
+     </div>
+
+     
+     </div>
+
+   
+     <br>
+     
+  
+    </div>
+
+  <br>
+
+
+
+ 
+
+    
+
+    {% endfor %}
+{% endblock %}
